@@ -35,13 +35,13 @@ C’est pour ça que quand on fait des **single page app** avec react ou angular
 
 Le server-side rendering c’est un peu le resto à l’ancienne qui te dresse ton assiette comme des pros en cuisine.
 Les single page app c’est un peu la cantine bonne franquette du hipster où le serveur te sert dans l’assiette direct à table.
-( Attention cependant : avec l’arrivée d’http 2, le server-side rendering revient à la mode et React est déjà sur le coup. )
+_(Attention cependant : avec l’arrivée d’http 2, le server-side rendering revient à la mode et React est déjà sur le coup.)_
 
-![json](readme/plat-json.jpg)
+<img src="readme/plat-react.jpg" width="600">
 
 Donc avec une single page app, globalement ton controller **server-side** il va gérer seulement la base de données, et ton controller **client-side** il va faire interface avec ton api.
 
-![single page app](readme/single.png)
+<img src="readme/single.png" width="600">
 
 Avec un framework MVC comme Angular :
 + Tu défini tes routes public avec _ng-router_.
