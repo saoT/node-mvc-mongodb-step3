@@ -1,11 +1,14 @@
 'use strict';
 
-const db = require('../../database');
+const Products = require('../../database').products;
 
+//------------------ /!\ ------------------//
+// N'oubliez pas de rajouter la méthode pour chaque route.
+// ----------------------------------------//
 const products =  {
 
-  find : function (req, res) {
-    db.products.find({name: req.params.name})
+  find : (req, res) => {
+    Products.find({name: req.params.name})
     .then( data => {
       res.send('Operation completed ' + data);
     })

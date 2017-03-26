@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+
 const users = require('./models/users');
 const products = require('./models/products');
 

@@ -1,6 +1,8 @@
 'use strict';
 
-const products = {
+const {Schema} = require('mongoose');
+
+const Products = new Schema({
   name: {
     type: String,
     required: true
@@ -9,4 +11,6 @@ const products = {
     type: Number,
     required: true
   }
-}
+});
+
+module.exports = Products;

@@ -1,21 +1,27 @@
 'use strict';
 
 
-const db = require('../../database');
+const Users = require('../../database').users;
 
+//------------------ /!\ ------------------//
+// N'oubliez pas de rajouter la méthode pour chaque route.
+// ----------------------------------------//
 const users  = {
- // method...
 
-  create : (req, res) => {
-    // var newUser = new UserSchema({ email: 'sdsjh.dhf@dhfg.com' })
-    const newUser = new db.users(req.body);
-    newUser.save()
-    .then ( data => {
-      res.send(`Operation succeeded : \n ${data}`);
+  // Find a user by name
+  find : (req, res) => {
+    Users.find({mail: req.params.mail})
+    .then( data => {
+      res.send('Operation completed ' + data);
     })
-    .catch ( err => {
-      res.send('Operation failed : \n' + err);
+    .catch( err => {
+      res.send('Operation failed :: ' + err)
     });
+  },
+
+  restricted : (req, res) => {
+    console.log('Accessed the restricted area');
+    res.send('Access authorized');
   }
 
 }
