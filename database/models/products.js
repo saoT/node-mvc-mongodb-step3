@@ -10,7 +10,8 @@ const Products = new Schema({
   price: {
     type: Number,
     required: true
-  }
+  },
+  something: Array
 });
 
 module.exports = Products;

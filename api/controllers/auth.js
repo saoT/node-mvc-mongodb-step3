@@ -13,8 +13,7 @@ function generate_token (user) {
       iss: user.mail,
       sub : user.hash
   }
-  console.log(global.config.APP_SECRET)
-  return jwt.sign(payload, global.config.APP_SECRET);
+  return jwt.sign(payload, 'rhododendron');
 }
 
 // Create a hash for the user
@@ -33,7 +32,7 @@ const auth =  {
     newUser.save()
     .then ( user => {
       const token = generate_token(user);
-      res.send('Operation succeeded : \n' + token);
+      res.send(token);
     })
     .catch ( err => {
       // Handle "Missing paramater" or "User already exists" or "Server error" here
@@ -56,12 +55,16 @@ const auth =  {
   },
 
   require_token : (req, res, next) => {
-    const token = req.get('authorization');
+    const token = req.query.token;
+    //const token  = req.get('Authorization');
+    
     if (!token) res.send('Authorization Required');
-    jwt.verify(token, global.config.APP_SECRET, (err, decoded) => {
-      if (err || decoded.exp < moment().unix()) res.send('Token expired');
-      else next();
-    });
+    else {
+      jwt.verify(token, 'rhododendron', (err, decoded) => {
+        if (err || decoded.exp < moment().unix()) res.send('Token expired');
+        else next();
+      });
+    }
   }
 }
 

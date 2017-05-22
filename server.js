@@ -1,6 +1,6 @@
 'use strict';
 
-global.config = require('./config/config.js');
+//global.config = require('./config/config.js');
 // L'entrée de notre application.
 // A chaque fois que je veux accéder à mon site il utilisera ce serveur pour traiter ma demande.
 
@@ -16,7 +16,7 @@ const app = express();
 // On lui défini du middleware
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");// www.google.com monsite.com 143.45.78.23
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   next();
 });
 

@@ -1,9 +1,12 @@
 'use strict';
 
+
 const mongoose = require('mongoose');
 
 const users = require('./models/users');
 const products = require('./models/products');
+// STEP 2 
+// Dans mongoose require mon shéma topmodel.js sous le nom topModel
 
 mongoose.connect('mongodb://localhost:27017/test');
 
@@ -26,6 +29,9 @@ process.on('SIGINT', function () {
   });
 });
 
+// STEP 3 :
+// créer et exporter mon model sous le nom topModel et 'TopModel'
+// qui permettra d'avoir accés à mon model TopModel en utilisant db.topModel
 const db = {
   users: mongoose.model('Users', users),
   products: mongoose.model('Products', products)

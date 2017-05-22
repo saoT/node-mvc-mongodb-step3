@@ -10,6 +10,9 @@ const bodyParser = require('body-parser');
 //------------------ /!\ ------------------//
 // N'oubliez pas d'importer chaque controller.
 // ----------------------------------------//
+
+// STEP 6 
+// Require ton super nouveau controller topModels.js
 const auth = require('./controllers/auth');
 const users = require('./controllers/users');
 const products = require('./controllers/products');
@@ -32,14 +35,20 @@ apiRoutes.use(bodyParser.json());
 // ----------------------------------------//
 
 // AUTH CONTROLLER ROUTES
-apiRoutes.post('/register', auth.register);
 apiRoutes.post('/login', auth.login);
 
 // USER CONTROLLER ROUTES
 apiRoutes.get('/users', users.find);
-apiRoutes.get('/restricted', auth.require_token, users.restricted);
+apiRoutes.post('/users', auth.register);
+apiRoutes.get('/users/restricted', auth.require_token, users.restricted);
+
+// STEP 7
+// Définir une route pour atteindre la méthode find de topModels
+// apiRoutes.get('/topmodels', topModels.find);
+
+
 
 // PRODUCTS CONTROLLER ROUTES
-apiRoutes.get('/products/:name', products.find);
+apiRoutes.get('/products', products.find);
 
 module.exports = apiRoutes
